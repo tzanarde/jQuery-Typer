@@ -6,6 +6,16 @@ function adicionaEstatistica(){
     linha_tabela.find(".botao-remover").click(removeLinha);
 
     corpo_tabela.prepend(linha_tabela);
+
+    $(".estatisticas").slideDown(500);
+    scrollEstatisticas();
+}
+
+function scrollEstatisticas(){
+    var posicao_estatisticas = $(".estatisticas").offset().top;
+    $("body").animate({
+        scrollTop: posicao_estatisticas + "px"
+    }, 1000);
 }
 
 function novaLinha(pnome_usuario, pqtd_palavras){
@@ -30,5 +40,15 @@ function novaLinha(pnome_usuario, pqtd_palavras){
 
 function removeLinha(){
     event.preventDefault();
-    $(this).parent().parent().remove();
+    var linha = $(this).parent().parent();
+    linha.fadeOut(1000);
+    setTimeout(function() {
+        linha.remove();
+    }, 1000);
+}
+
+$("#botao-estatisticas").click(exibeEstatisticas);
+
+function exibeEstatisticas(){
+    $(".estatisticas").stop().slideToggle(600);
 }
