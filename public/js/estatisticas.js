@@ -52,3 +52,13 @@ $("#botao-estatisticas").click(exibeEstatisticas);
 function exibeEstatisticas(){
     $(".estatisticas").stop().slideToggle(600);
 }
+
+function atualizaEstatisticas(){
+    $.get("http://localhost:3000/placar", function(data){
+        $(data).each(function(){
+            var linha = novaLinha(this.usuario, this.pontos);
+            linha.find(".botao-remover").click(removeLinha);
+            $("tbody").append(linha);
+        });
+    })
+}

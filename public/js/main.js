@@ -7,6 +7,7 @@ $(function(){
     iniciaCronometro();
     iniciaMarcadores();
     $("#botao-reiniciar").click(reiniciaTyper);
+    atualizaEstatisticas();
 });
 
 function atualizaTamanhoFrase(){
